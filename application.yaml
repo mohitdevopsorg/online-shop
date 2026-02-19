@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-onlineshop-app
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/mohitdevopsorg/online-shop
+    targetRevision: main
+    path: online-shop-helm
+
+  destination:
+    server: https://mygapclust-kubedemo1-0018de-5tx1ye76.hcp.southindia.azmk8s.io:443
+    namespace: my-app
+
+  revisionHistoryLimit: 6
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
