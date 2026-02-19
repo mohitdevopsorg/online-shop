@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: my-onlineshop-project
+  namespace: argocd
+spec:
+  description: Project for my-app only
+
+  sourceRepos:
+    - https://github.com/mohitdevopsorg/online-shop
+
+  destinations:
+    - namespace: my-app
+      server: https://mygapclust-kubedemo1-0018de-5tx1ye76.hcp.southindia.azmk8s.io:443
+
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace
+
+  namespaceResourceWhitelist:
+    - group: "*"
+      kind: "*"
