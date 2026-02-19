@@ -4,7 +4,7 @@ metadata:
   name: my-onlineshop-app
   namespace: argocd
 spec:
-  project: default
+  project: my-onlineshop-project
 
   source:
     repoURL: https://github.com/mohitdevopsorg/online-shop
